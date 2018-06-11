@@ -44,10 +44,7 @@ print('load success')
 
 model = resnet50(pretrained='imagenet')
 model.last_linear = nn.Sequential(
-    nn.Linear(model.last_linear.in_features, 1024),
-    nn.ReLU(),
-    nn.Linear(512, 1),
-    nn.Sigmoid()
+    nn.Linear(model.last_linear.in_features, 1)
 )
 model = nn.DataParallel(model, device_ids=[0, 1, 2, 3]).cuda()
 lr = 1e-4
