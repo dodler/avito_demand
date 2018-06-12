@@ -47,7 +47,7 @@ model.last_linear = nn.Sequential(
     nn.Linear(model.last_linear.in_features, 1)
 )
 model = nn.DataParallel(model, device_ids=[0, 1, 2, 3]).cuda()
-lr = 1e-4
+lr = 1e-5
 
 num_parameters = sum([l.nelement() for l in model.parameters()])
 print('number of parameters: {}'.format(num_parameters))

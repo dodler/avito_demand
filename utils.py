@@ -2,6 +2,12 @@ from dataset.dataset import *
 import os.path as osp
 import pandas as pd
 from tqdm import *
+import numpy as np
+import torch
+
+
+def np_to_var(np_arr, requires_grad=True):
+    return torch.autograd.Variable(torch.from_numpy(np_arr), requires_grad=requires_grad)
 
 
 class CsvAvitoProvider(DefaultClassProvider):
